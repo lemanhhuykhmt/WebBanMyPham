@@ -15,11 +15,12 @@ create table Product
 	CategoryID int,
 	[Image] varchar(500),
 	Price decimal(18,2),
+	Measure nvarchar(20),
 	[Description] nvarchar(500),
 	Content nvarchar(MAX),
 	Quantity int default 0,
-	[Status] bit default 1,
-	ShowHome bit default 0,
+	[Status] bit not null default 1,
+	ShowHome bit not null default 0,
 	Primary Key (ProductID)
 )
 go
