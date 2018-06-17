@@ -33,6 +33,7 @@ namespace WebDoMyPham.Areas.Admin.Controllers
 
         // POST: Admin/Product/Create
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Create(Product product)
         {
             if (ModelState.IsValid)
@@ -45,6 +46,7 @@ namespace WebDoMyPham.Areas.Admin.Controllers
         }
 
         // GET: Admin/Product/Edit/5
+        [HttpGet]
         public ActionResult Edit(int? id)
         {
             if(id == null)
@@ -62,40 +64,27 @@ namespace WebDoMyPham.Areas.Admin.Controllers
 
         // POST: Admin/Product/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
+        public ActionResult Edit(Product product)
+        {
+            if (ModelState.IsValid)
             {
-                return View();
+                ProductDAO.Update(product);
             }
+            return RedirectToAction("Index");
         }
 
         // GET: Admin/Product/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if(ModelState.IsValid)
+            {
+                ProductDAO.Delete(id);
+            }
+            return RedirectToAction("Index");
         }
 
-        // POST: Admin/Product/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
         private void setViewBagProductCategory(int? id = null)
         {
             List<ProductCategory> listCategory = ProductCategoryDAO.GetList();

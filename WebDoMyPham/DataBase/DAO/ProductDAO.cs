@@ -42,7 +42,7 @@ namespace WebDoMyPham.DataBase.DAO
                 return false;
             }
         }
-        public static bool Delete(int id)
+        public static bool Delete(int? id)
         {
             try
             {
