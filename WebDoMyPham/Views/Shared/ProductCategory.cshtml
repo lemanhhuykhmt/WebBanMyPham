@@ -1,0 +1,27 @@
+﻿
+
+    <div class="categories">
+        <ul>
+            <h3>Categories</h3>
+
+
+            @foreach (var item in (List<WebDoMyPham.DataBase.EF.ProductCategory>)ViewBag.CategoryParent)
+            {
+                <li class="btn-group dropright w-100">
+                    <button class="btn btn-secondary btn-lg w-100" type="button">
+                        @item.CategoryName
+                    </button>
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="sr-only">Toggle Dropright</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        @foreach (var subitem in item.ProductCategory1)
+                        {
+                            <a class="dropdown-item" href="#">@subitem.CategoryName</a>
+                        }
+                    </div>
+                </li>
+            }
+
+        </ul>
+    </div>

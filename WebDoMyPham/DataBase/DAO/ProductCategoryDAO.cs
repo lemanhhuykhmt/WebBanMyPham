@@ -13,5 +13,9 @@ namespace WebDoMyPham.DataBase.DAO
         {
             return (from p in db.ProductCategories where p.ParentID != null select p).ToList();
         }
+        public static List<ProductCategory> GetListParent()
+        {
+            return (from p in db.ProductCategories where p.ParentID == null select p).ToList();
+        }
     }
 }

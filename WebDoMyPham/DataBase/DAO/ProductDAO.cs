@@ -60,5 +60,20 @@ namespace WebDoMyPham.DataBase.DAO
         {
             return db.Products.Find(id);
         }
+
+        public static List<Product> GetListNewProduct(int number)
+        {
+            return db.Products.Where(x => x.Status).OrderByDescending(x => x.CreatedDate).Take(number).ToList();
+        }
+        public static List<Product> GetListHotProduct(int number)
+        {
+            return db.Products.Where(x => x.TopHot != null && x.TopHot > DateTime.Now && x.Status).OrderByDescending(x => x.TopHot).Take(number).ToList();
+        }
+
+        public static List<Product> GetListRelateProduct(int productID, int number)
+        {
+            var product = GetByID(productID);
+            return db.Products.Where(x => x.ProductID != productID && x.CategoryID == product.CategoryID).Take(number).ToList();
+        }
     }
 }

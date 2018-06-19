@@ -64,7 +64,7 @@ namespace WebDoMyPham.Areas.Admin.Controllers
 
         // POST: Admin/Product/Edit/5
         [HttpPost]
-
+        [ValidateInput(false)]
         public ActionResult Edit(Product product)
         {
             if (ModelState.IsValid)

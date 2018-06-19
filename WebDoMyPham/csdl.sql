@@ -14,13 +14,16 @@ create table Product
 	ProductName nvarchar(100),
 	CategoryID int,
 	[Image] varchar(500),
-	Price decimal(18,2),
+	Price decimal(18,0),
+	PromotionPrice decimal(18,0),
 	Measure nvarchar(20),
 	[Description] nvarchar(500),
 	Content nvarchar(MAX),
 	Quantity int default 0,
 	[Status] bit not null default 1,
 	ShowHome bit not null default 0,
+	CreatedDate datetime default getdate(),
+	TopHot datetime,
 	Primary Key (ProductID)
 )
 go
