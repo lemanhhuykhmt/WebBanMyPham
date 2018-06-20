@@ -1,7 +1,7 @@
 ﻿@model WebDoMyPham.DataBase.EF.Product
 
 @{
-    ViewBag.Title = "Detail";
+    ViewBag.Title = "DetailProduct";
     var listRelateProduct = (List<WebDoMyPham.DataBase.EF.Product>)ViewBag.ListRelateProduct;
 }
 
@@ -32,7 +32,7 @@
     <div class="content">
         <div class="content_top">
             <div class="back-links">
-                <p><a href="index.html">Home</a> >>>> <a href="#">@Model.ProductCategory.CategoryName</a></p>
+                <p style="width:120px; height:16px"><a href="/Home/Index">Home </a>>>>> <a href="">@Model.ProductCategory.CategoryName</a></p>
             </div>
             <div class="clear"></div>
         </div>

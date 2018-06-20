@@ -16,7 +16,13 @@ namespace WebDoMyPham
             routes.MapRoute(
                 name: "Product Detail",
                 url: "productdetail/{id}",
-                defaults: new { controller = "Product", action = "Detail", id = UrlParameter.Optional },
+                defaults: new { controller = "Product", action = "DetailProduct", id = UrlParameter.Optional },
+                namespaces: new string[] { "WebDoMyPham.Controllers" }
+            );
+            routes.MapRoute(
+                name: "Category Detail",
+                url: "categorydetail/{id}",
+                defaults: new { controller = "Product", action = "DetailCategory", id = UrlParameter.Optional },
                 namespaces: new string[] { "WebDoMyPham.Controllers" }
             );
 

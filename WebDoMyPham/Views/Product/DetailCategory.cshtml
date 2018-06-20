@@ -1,0 +1,60 @@
+﻿@model List<WebDoMyPham.DataBase.EF.Product>
+@{
+    ViewBag.Title = "DetailCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var Category = (WebDoMyPham.DataBase.EF.ProductCategory)ViewBag.Category;
+    int count = Model.Count ;
+}
+
+<html>
+<head>
+
+
+</head>
+<body>
+    <div class="content_top">
+        <div class="back-links">
+            <p style="width:120px; height:16px"><a href="/Home/Index">Home </a>>>>> <a href="">@Category.CategoryName</a></p>
+        </div>
+        <div class="clear"></div>
+    </div>
+    @for (int i = 0; i < (Model.Count / 4 + 1); ++i)
+    {
+        <div class="section group">
+            @for (int j = 0; j < (count > 4 ? 4 : count); ++j)
+            {
+                var url = "/productdetail/" + Model[j].ProductID;
+                <div class="grid_1_of_4 images_1_of_4">
+                    <a href="@url"><img src="@Model[j].Image" alt="@Model[j].ProductName" /></a>
+                    <h2>@Model[j].ProductName </h2>
+                    <div class="price-details">
+                        <div class="price-number">
+                            <p style="width:200px"><span class="rupees">@Model[j].Price</span></p>
+                        </div>
+                        <div class="add-cart">
+                            <h4><a href="preview.html">Thêm Vào Giỏ</a></h4>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            }
+            @{ count = count - 4;}
+
+
+        </div>
+    }
+
+
+    </body>
+
+
+
+</html>
+
+
+
+
+
+
+
+

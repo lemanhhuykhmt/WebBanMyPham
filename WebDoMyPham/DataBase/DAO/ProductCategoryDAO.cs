@@ -9,6 +9,11 @@ namespace WebDoMyPham.DataBase.DAO
     public static class ProductCategoryDAO
     {
         private static MyPhamContext db = new MyPhamContext();
+
+        public static ProductCategory GetByID(int categoryID)
+        {
+            return db.ProductCategories.Find(categoryID);
+        }
         public static List<ProductCategory> GetList()
         {
             return (from p in db.ProductCategories where p.ParentID != null select p).ToList();
@@ -16,6 +21,10 @@ namespace WebDoMyPham.DataBase.DAO
         public static List<ProductCategory> GetListParent()
         {
             return (from p in db.ProductCategories where p.ParentID == null select p).ToList();
+        }
+        public static List<Product> GetListProduct(int categoryID)
+        {
+            return db.Products.Where(x => x.CategoryID == categoryID).ToList();
         }
     }
 }

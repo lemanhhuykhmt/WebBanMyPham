@@ -26,11 +26,18 @@ namespace WebDoMyPham.Controllers
         }
 
 
-        public ActionResult Detail(int id)
+        public ActionResult DetailProduct(int id)
         {
             var product = ProductDAO.GetByID(id);
             ViewBag.ListRelateProduct = ProductDAO.GetListRelateProduct(id, 4);
             return View(product);
+        }
+
+        public ActionResult DetailCategory(int id)
+        {
+            var listProduct = ProductCategoryDAO.GetListProduct(id);
+            ViewBag.Category = ProductCategoryDAO.GetByID(id);
+            return View(listProduct);
         }
     }
 }

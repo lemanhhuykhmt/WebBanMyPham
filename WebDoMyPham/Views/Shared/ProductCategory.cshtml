@@ -1,5 +1,5 @@
 ﻿<head>
-    <link href="~/Assets/Client/css/bootstrap.min.css" rel="stylesheet" />
+    @*<link href="~/Assets/Client/css/bootstrap.min.css" rel="stylesheet" />*@
 </head>
 
 <body>
@@ -21,7 +21,8 @@
                     <div class="dropdown-menu">
                         @foreach (var subitem in item.ProductCategory1)
                         {
-                            <a class="dropdown-item" href="#">@subitem.CategoryName</a>
+                            var url = "/categorydetail/" + subitem.CategoryID;
+                            <a class="dropdown-item" href="@url">@subitem.CategoryName</a>
                         }
                     </div>
                 </li>
