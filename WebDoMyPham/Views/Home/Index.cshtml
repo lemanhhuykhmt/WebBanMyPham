@@ -87,8 +87,19 @@
                 <a href="@url"><img src="@item.Image" alt="@item.ProductName" /></a>
                 <h2>@item.ProductName </h2>
                 <div class="price-details">
-                    <div class="price-number">
-                        <p><span class="rupees">@item.Price</span></p>
+                    <div class="price">
+                        @if (item.PromotionPrice.HasValue)
+                        {
+                            <div>
+                                <span style="font-size: 12px"><strike>@(item.Price.HasValue ? item.Price.Value.ToString("N0") + " VNĐ" : "Liên Hệ")</strike></span>
+                                <span style="font-size: 12px; padding-left: 1.8em">@(item.PromotionPrice.HasValue ? item.PromotionPrice.Value.ToString("N0") + " VNĐ" : "")</span>
+                            </div>
+
+                        }
+                        else
+                        {
+                            <span style="font-size: 12px">@(item.Price.HasValue ? item.Price.Value.ToString("N0") + " VNĐ" : "Liên Hệ")</span>
+                        }
                     </div>
                     <div class="add-cart">
                         <h4><a href="preview.html">Thêm Vào Giỏ</a></h4>
@@ -118,8 +129,19 @@
                 <a href="@url"><img src="@item.Image" alt="@item.ProductName" /></a>
                 <h2>@item.ProductName </h2>
                 <div class="price-details">
-                    <div class="price-number">
-                        <p><span class="rupees">@item.Price</span></p>
+                    <div class="price">
+                        @if (item.PromotionPrice.HasValue)
+                        {
+                            <div>
+                                <span style="font-size: 12px"><strike>@(item.Price.HasValue ? item.Price.Value.ToString("N0") + " VNĐ" : "Liên Hệ")</strike></span>
+                                <span style="font-size: 12px; padding-left: 1.8em">@(item.PromotionPrice.HasValue ? item.PromotionPrice.Value.ToString("N0") + " VNĐ" : "")</span>
+                            </div>
+
+                        }
+                        else
+                        {
+                            <span style="font-size: 12px">@(item.Price.HasValue ? item.Price.Value.ToString("N0") + " VNĐ" : "Liên Hệ")</span>
+                        }
                     </div>
                     <div class="add-cart">
                         <h4><a href="preview.html">Thêm Vào Giỏ</a></h4>

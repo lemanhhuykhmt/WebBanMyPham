@@ -33,10 +33,26 @@ namespace WebDoMyPham.Controllers
             return View(product);
         }
 
-        public ActionResult DetailCategory(int id)
+        public ActionResult DetailCategory(int id, int page = 1, int pageSize = 3)
         {
-            var listProduct = ProductCategoryDAO.GetListProduct(id);
+
             ViewBag.Category = ProductCategoryDAO.GetByID(id);
+            int totalRecord = 0;
+            var listProduct = ProductCategoryDAO.GetListProduct(id, ref totalRecord, page, pageSize);
+
+            ViewBag.Total = totalRecord;
+            ViewBag.Page = page;
+
+            int maxPage = 3;
+            int totalPage = 0;
+
+            totalPage = (int)Math.Ceiling((double)(totalRecord / pageSize));
+            ViewBag.TotalPage = totalPage;
+            ViewBag.MaxPage = maxPage;
+            ViewBag.First = 1;
+            ViewBag.Last = totalPage;
+            ViewBag.Next = page + 1;
+            ViewBag.Prev = page - 1;
             return View(listProduct);
         }
     }

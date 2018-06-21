@@ -22,9 +22,10 @@ namespace WebDoMyPham.DataBase.DAO
         {
             return (from p in db.ProductCategories where p.ParentID == null select p).ToList();
         }
-        public static List<Product> GetListProduct(int categoryID)
+        public static List<Product> GetListProduct(int categoryID, ref int totalRecord, int pageIndex = 1, int pageSize = 2)
         {
-            return db.Products.Where(x => x.CategoryID == categoryID).ToList();
+            totalRecord = db.Products.Where(x => x.CategoryID == categoryID).Count();
+            return db.Products.Where(x => x.CategoryID == categoryID).OrderByDescending(x => x.CreatedDate).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
         }
     }
 }
