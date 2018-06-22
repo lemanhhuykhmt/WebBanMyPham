@@ -14,6 +14,7 @@ namespace WebDoMyPham.Areas.Admin.Controllers
             AccountLogin accSession = Session["AccountSession"] as AccountLogin;
             if(accSession == null)
             {
+                Session["Link"] = System.Web.HttpContext.Current.Request.Url.AbsoluteUri;
                 filterContext.Result = new RedirectToRouteResult(new
                     System.Web.Routing.RouteValueDictionary(new { controller = "Login", action = "Index", area = "Admin" }));
             }

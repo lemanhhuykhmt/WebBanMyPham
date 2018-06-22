@@ -38,6 +38,7 @@ namespace WebDoMyPham.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                product.CreatedDate = DateTime.Now;
                 ProductDAO.Insert(product);
                 return RedirectToAction("Index");
             }

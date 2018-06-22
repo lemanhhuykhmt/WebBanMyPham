@@ -32,6 +32,13 @@ namespace WebDoMyPham.Areas.Admin.Controllers
                     accSession.AccountID = acc.AccountID;
                     accSession.UserName = acc.Username;
                     Session.Add("AccountSession", accSession);
+
+                    //Chuyển đến đường link lúc đầu
+                    var currentLink = Session["Link"];
+                    if (currentLink != null)
+                    {
+                        Response.Redirect(currentLink.ToString());
+                    }
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -39,6 +46,7 @@ namespace WebDoMyPham.Areas.Admin.Controllers
                     ModelState.AddModelError("", "đăng nhập không đúng");
                 }
             }
+
             return View("Index");
         }
     }

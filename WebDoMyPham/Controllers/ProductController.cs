@@ -33,7 +33,7 @@ namespace WebDoMyPham.Controllers
             return View(product);
         }
 
-        public ActionResult DetailCategory(int id, int page = 1, int pageSize = 3)
+        public ActionResult DetailCategory(int id, int page = 1, int pageSize = 4)
         {
 
             ViewBag.Category = ProductCategoryDAO.GetByID(id);
@@ -46,7 +46,7 @@ namespace WebDoMyPham.Controllers
             int maxPage = 3;
             int totalPage = 0;
 
-            totalPage = (int)Math.Ceiling((double)(totalRecord / pageSize));
+            totalPage = (int)Math.Ceiling((double)(totalRecord / pageSize)) + 1;
             ViewBag.TotalPage = totalPage;
             ViewBag.MaxPage = maxPage;
             ViewBag.First = 1;

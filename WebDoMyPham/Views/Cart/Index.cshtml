@@ -1,0 +1,72 @@
+﻿@model List<WebDoMyPham.Models.CartItem>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    decimal TongTien = 0;
+}
+
+
+
+<body>
+    <div class="content_top">
+        <div class="back-links">
+            <p style="width:120px; height:16px"><a href="/Home/Index">Home</a>>>>> <a href="">Giỏ Hàng</a></p>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" style="width:100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <td>Hình</td>
+                        <td>Tên Sản Phẩm</td>
+                        <td>Đơn Vị</td>
+                        <td>Số Lượng</td>
+                        <td>Đơn Giá</td>
+                        <td>Tổng Cộng</td>
+                        <th>Chức Năng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th><img src="@item.Product.Image" style="width:64px; height:64px"></th>
+                            <th>@Html.DisplayFor(modelItem => item.Product.ProductName)</th>
+                            <th>@Html.DisplayFor(modelItem => item.Product.Measure)</th>
+                            <th>@Html.DisplayFor(modelItem => item.Quantity)</th>
+                            @if (item.Product.PromotionPrice.HasValue)
+                            {
+                                TongTien = item.Quantity * item.Product.PromotionPrice.Value;
+                                <th>@item.Product.PromotionPrice.Value.ToString("N0")</th>
+                                <th>@(item.Product.PromotionPrice.Value * item.Quantity)</th>
+
+
+
+                            }
+                            else
+                            {
+                                TongTien = item.Quantity * item.Product.Price.Value;
+                                <th> @item.Product.Price.Value.ToString("N0") </th>
+                                <th>@(item.Product.Price.Value * item.Quantity) </th>
+
+
+
+                            }
+                            <td>
+                                @*@Html.ActionLink("Edit", "Edit", new { id = item.ProductID }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.ProductID }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductID })*@
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
