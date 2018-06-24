@@ -1392,6 +1392,7 @@
     <Content Include="Assets\Client\js\bootstrap.bundle.min.js" />
     <Content Include="Assets\Client\js\bootstrap.js" />
     <Content Include="Assets\Client\js\bootstrap.min.js" />
+    <Content Include="Assets\Client\js\Controller\cartController.js" />
     <Content Include="Assets\Client\js\easing.js" />
     <Content Include="Assets\Client\js\easyResponsiveTabs.js" />
     <Content Include="Assets\Client\js\fontawesome.js" />
@@ -1606,6 +1607,7 @@
     <Content Include="Views\Product\DetailProduct.cshtml" />
     <Content Include="Views\Product\DetailCategory.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Shared\HeaderCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

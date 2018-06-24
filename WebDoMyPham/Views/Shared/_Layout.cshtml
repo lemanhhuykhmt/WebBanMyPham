@@ -24,7 +24,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <link href="~/Assets/Client/css/slider.css" rel="stylesheet" type="text/css" media="all" />
     @*<script src="~/Assets/Client/js/jquery-3.3.1.js"></script>*@
     @*<script src="~/Assets/Client/js/jquery-1.7.2.min.js"></script>*@
-    <script type="text/javascript" src="~/Assets/Client/js/jquery-1.11.3.min.js"></script>
+    <script src="~/Assets/Client/js/jquery-1.11.3.min.js"></script>
 
     <script src="/Assets/Client/js/popper.js"></script>
     <script src="~/Assets/Client/js/bootstrap.js"></script>
@@ -60,44 +60,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="logo">
                     <a href="index.html"><img src="~/Assets/Client/images/logo.png" alt="" /></a>
                 </div>
-                <div class="cart">
-                    <p>
-                        Welcome to our Online Store! <span>Cart:</span><div id="dd" class="wrapper-dropdown-2">
-                            0 item(s) - $0.00
-                            <ul class="dropdown">
-                                <li>you have no items in your Shopping cart</li>
-                            </ul>
-                        </div>
-                    </p>
-                </div>
-                <script type="text/javascript">
-                    function DropDown(el) {
-                        this.dd = el;
-                        this.initEvents();
-                    }
-                    DropDown.prototype = {
-                        initEvents: function () {
-                            var obj = this;
-
-                            obj.dd.on('click', function (event) {
-                                $(this).toggleClass('active');
-                                event.stopPropagation();
-                            });
-                        }
-                    }
-
-                    $(function () {
-
-                        var dd = new DropDown($('#dd'));
-
-                        $(document).click(function () {
-                            // all dropdowns
-                            $('.wrapper-dropdown-2').removeClass('active');
-                        });
-
-                    });
-
-                </script>
+                @{ Html.RenderAction("HeaderCart", "Cart");}
                 <div class="clear"></div>
             </div>
             @{ Html.RenderAction("MainMenu", "Home");}
@@ -171,6 +134,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         });
     </script>
     <a href="#" id="toTop"><span id="toTopHover"> </span></a>
+    @RenderSection("jsFooter", required:false)
 </body>
 </html>
 
