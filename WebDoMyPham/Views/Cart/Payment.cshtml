@@ -1,19 +1,15 @@
 ﻿@model List<WebDoMyPham.Models.CartItem>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Thanh Toán";
     Layout = "~/Views/Shared/_Layout.cshtml";
     decimal TongTien = 0;
 }
 
-@section jsFooter{
-
-    <script src="~/Assets/Client/js/Controller/cartController.js"></script>
-}
 
 <body>
     <div class="content_top">
         <div class="back-links">
-            <p style="width:120px; height:16px"><a href="/Home/Index">Home</a>>>>> <a href="">Giỏ Hàng</a></p>
+            <p style="width:120px; height:16px"><a href="/Home/Index">Home</a>>>>> <a href="">Thanh Toán</a></p>
         </div>
         <div class="clear"></div>
     </div>
@@ -81,14 +77,27 @@
                 </table>
             </div>
 
-            <div class="pull-right">
-                <a href="/Cart/Payment" class="btn btn-primary">Thanh Toán</a>
+        }
+        <div class="section group">
+            <div class="col-md-6">
+                @using (Html.BeginForm("Payment", "Cart", FormMethod.Post))
+                {
+                    <div class="form-group">
+                        <label>Người nhận</label>
+                        <input name="receiver" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Địa chỉ</label>
+                        <input name="address" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Số điện thoại</label>
+                        <input name="phone" class="form-control" />
+                    </div>
+                    <button type="submit" class="btn">Gửi đơn hàng</button>
+                }
             </div>
-        }
-        else
-        {
-            <span class="alert alert-danger">Chưa có sản phẩm trong giỏ hàng</span>
-        }
+        </div>
 
     </div>
 </body>

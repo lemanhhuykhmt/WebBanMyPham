@@ -4,7 +4,7 @@
     },
 
     regEvents: function () {
-        $('#btnUpdate').off('click').on('click', function () {
+        $('.btnUpdate').off('click').on('click', function () {
             var listTextBox = $('.txtQuantity');
             var cartList = [];
             $.each(listTextBox, function (i, item) {
@@ -23,6 +23,33 @@
                 dataType: 'json',
                 type: 'POST',
                 success: function (res){
+                    if (res.status == true) {
+                        window.location.href = "/Cart/Index";
+                    }
+                }
+            });
+        });
+
+
+        $('.btnDelete').off('click').on('click', function () {
+            var listTextBox = $('.txtQuantity');
+            var cartList = [];
+            $.each(listTextBox, function (i, item) {
+                cartList.push({
+                    Quantity: $(item).val(),
+                    Product: {
+                        ProductID: $(item).data('id')
+                    }
+                });
+            });
+
+
+            $.ajax({
+                url: '/Cart/Delete',
+                data: { id: $(this).data('id') },
+                dataType: 'json',
+                type: 'POST',
+                success: function (res) {
                     if (res.status == true) {
                         window.location.href = "/Cart/Index";
                     }
