@@ -1,0 +1,151 @@
+﻿@model List<WebDoMyPham.Models.CartItem>
+
+
+
+<head>
+
+
+ 
+
+
+</head>
+<body>
+    @{
+        int count = 0;
+        decimal Total = 0;
+        if (Model != null)
+        {
+            count = Model.Count;
+            foreach (var item in Model)
+            {
+                if (item.Product.PromotionPrice != null)
+                {
+                    Total += item.Product.PromotionPrice.Value * item.Quantity;
+                }
+                else
+                {
+                    Total += item.Product.Price.Value * item.Quantity;
+                }
+            }
+
+        }
+    }
+    <div class="cart">
+        <div>
+            <span>Cart:</span>
+            <div id="dd" class="wrapper-dropdown-2">
+                @count item(s) - @Total.ToString("N0")
+                <ul class="dropdown"  style="width:250px">
+                    @if (Model != null && Model.Count > 0)
+                    {
+
+                        <li>
+                            <table class="table">
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        var url = "/productdetail/" + item.Product.ProductID;
+                                        <tr>
+                                            <td class="text-center">
+                                                @if (item.Product.Image.Length != 0)
+                                                {
+                                                    <a href="@url">
+                                                        <img src="@item.Product.Image" alt="" title="@item.Product.ProductName" class="img-thumbnail" />
+                                                    </a>
+                                                }
+                                            </td>
+                                            <td class="text-left">
+                                                <a href="@url">@item.Product.ProductName</a>
+                                            </td>
+                                            <td class="text-right">x @item.Quantity</td>
+
+                                            @if (item.Product.PromotionPrice != null)
+                                            {
+                                                <td class="text-right">@item.Product.PromotionPrice.Value VNĐ</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="text-right">@item.Product.Price.Value VNĐ</td>
+                                            }
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </li>
+                        <li>
+                            <div>
+                                <table class="table table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-right">
+                                                <strong>Thành Tiền</strong>
+                                            </td>
+                                            <td class="text-right">
+                                                @Total
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-right">
+                                                <strong>Tổng Tiền</strong>
+                                            </td>
+                                            <td class="text-right">
+                                                @Total
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div>
+                                    <a class="btn btn-primary" href="/Cart/Index">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        Xem Chi Tiết Giỏ Hàng
+                                    </a>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <a class="btn btn-primary" href="/Cart/Payment">
+                                        <i class="fa fa-share">
+                                            Thanh Toán
+                                        </i>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>you have no items in your Shopping cart</li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function DropDown(el) {
+            this.dd = el;
+            this.initEvents();
+        }
+        DropDown.prototype = {
+            initEvents: function () {
+                var obj = this;
+
+                obj.dd.on('click', function (event) {
+                    $(this).toggleClass('active');
+                    event.stopPropagation();
+                });
+            }
+        }
+
+        $(function () {
+
+            var dd = new DropDown($('#dd'));
+
+            $(document).click(function () {
+                // all dropdowns
+                $('.wrapper-dropdown-2').removeClass('active');
+            });
+
+        });
+
+    </script>
+
+</body>

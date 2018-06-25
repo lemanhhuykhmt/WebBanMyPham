@@ -21,7 +21,14 @@ namespace WebDoMyPham.DataBase.EF
 
         public DateTime? CreatedDate { get; set; }
 
-        public decimal? Total { get; set; }
+        [StringLength(100)]
+        public string Receiver { get; set; }
+
+        [StringLength(200)]
+        public string Address { get; set; }
+
+        [StringLength(11)]
+        public string Phone { get; set; }
 
         public virtual Customer Customer { get; set; }
 

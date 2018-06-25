@@ -165,6 +165,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="DataBase\DAO\AccountDAO.cs" />
+    <Compile Include="DataBase\DAO\BillDAO.cs" />
+    <Compile Include="DataBase\DAO\DetailBillDAO.cs" />
     <Compile Include="DataBase\DAO\ProductCategoryDAO.cs" />
     <Compile Include="DataBase\DAO\ProductDAO.cs" />
     <Compile Include="DataBase\EF\Account.cs" />
@@ -1392,6 +1394,7 @@
     <Content Include="Assets\Client\js\bootstrap.bundle.min.js" />
     <Content Include="Assets\Client\js\bootstrap.js" />
     <Content Include="Assets\Client\js\bootstrap.min.js" />
+    <Content Include="Assets\Client\js\Controller\cartController.js" />
     <Content Include="Assets\Client\js\easing.js" />
     <Content Include="Assets\Client\js\easyResponsiveTabs.js" />
     <Content Include="Assets\Client\js\fontawesome.js" />
@@ -1606,6 +1609,9 @@
     <Content Include="Views\Product\DetailProduct.cshtml" />
     <Content Include="Views\Product\DetailCategory.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Shared\HeaderCart.cshtml" />
+    <Content Include="Views\Cart\Payment.cshtml" />
+    <Content Include="Views\Cart\Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

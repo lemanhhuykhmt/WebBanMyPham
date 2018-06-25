@@ -30,6 +30,10 @@ namespace WebDoMyPham.DataBase.EF
                 .IsUnicode(false);
 
             modelBuilder.Entity<Bill>()
+                .Property(e => e.Phone)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Bill>()
                 .HasMany(e => e.DetailBills)
                 .WithRequired(e => e.Bill)
                 .WillCascadeOnDelete(false);
@@ -45,6 +49,14 @@ namespace WebDoMyPham.DataBase.EF
             modelBuilder.Entity<Product>()
                 .Property(e => e.Image)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Product>()
+                .Property(e => e.Price)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<Product>()
+                .Property(e => e.PromotionPrice)
+                .HasPrecision(18, 0);
 
             modelBuilder.Entity<Product>()
                 .HasMany(e => e.DetailBills)
