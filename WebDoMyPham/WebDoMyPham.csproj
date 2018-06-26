@@ -162,10 +162,12 @@
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Common\AccountLogin.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="DataBase\DAO\AccountDAO.cs" />
     <Compile Include="DataBase\DAO\BillDAO.cs" />
+    <Compile Include="DataBase\DAO\CustomerDAO.cs" />
     <Compile Include="DataBase\DAO\DetailBillDAO.cs" />
     <Compile Include="DataBase\DAO\ProductCategoryDAO.cs" />
     <Compile Include="DataBase\DAO\ProductDAO.cs" />
@@ -181,6 +183,7 @@
     </Compile>
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1592,7 +1595,6 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\MainMenu.cshtml" />
     <Content Include="Views\Shared\ProductCategory.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
@@ -1604,7 +1606,6 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Home\Ato.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Product\DetailProduct.cshtml" />
     <Content Include="Views\Product\DetailCategory.cshtml" />
@@ -1612,6 +1613,10 @@
     <Content Include="Views\Shared\HeaderCart.cshtml" />
     <Content Include="Views\Cart\Payment.cshtml" />
     <Content Include="Views\Cart\Success.cshtml" />
+    <Content Include="Views\Client\Register.cshtml" />
+    <Content Include="Views\Client\Login.cshtml" />
+    <Content Include="Views\Home\Ato.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

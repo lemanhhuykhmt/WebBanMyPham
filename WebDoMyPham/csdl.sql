@@ -41,8 +41,10 @@ create table Bill
 	BillID int identity(1,1),
 	CustomerID int,
 	CreatedDate datetime default getdate(),
-	Total decimal(18,2),
-
+	Receiver nvarchar(100),
+	[Address] nvarchar(200),
+	Phone varchar(11),
+	
 	Primary Key (BillID)
 )
 go
