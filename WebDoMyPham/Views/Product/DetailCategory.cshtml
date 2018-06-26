@@ -44,7 +44,7 @@
         </div>
     }
     <!--Phân trang-->
-    @if (ViewBag.TotalPage > 1)
+    @if (ViewBag.TotalPage >= 1)
     {
         var pageDisplay = (int)ViewBag.MaxPage;
         int totalPage = (int)ViewBag.TotalPage;

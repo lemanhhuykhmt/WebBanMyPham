@@ -33,7 +33,7 @@ namespace WebDoMyPham.Controllers
             return View(product);
         }
 
-        public ActionResult DetailCategory(int id, int page = 1, int pageSize = 4)
+        public ActionResult DetailCategory(int id, int page = 1, int pageSize = 16)
         {
 
             ViewBag.Category = ProductCategoryDAO.GetByID(id);
